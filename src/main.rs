@@ -65,12 +65,17 @@ fn main() -> Result<(), Box<dyn error::Error>> {
     }
 
     let mut term = Term::new()?;
-    let mut clock = Clock::new(configuration);
+    let mut clock = Clock::new(configuration.clone());
 
     // Draw immediately for responsiveness
     let mut size = term.size()?;
     clock.resize(size);
     clock.reset(&mut term)?;
+
+    // If --once flag is set, just draw and exit
+    if configuration.once {
+        return Ok(());
+    }
 
     while !FINISH.load(Ordering::Relaxed) {
         let mut dirty = false;

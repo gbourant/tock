@@ -61,6 +61,7 @@ Options:
   -c, --center           Center the clock in the terminal. Overrides manual positioning
   -C, --color <COLOR>    Change the color of the time [default: 2]
   -f, --format <FORMAT>  Change the date format [default: "%F | %Z"]
+  -o, --once             Render the clock once and exit
   -h, --help             Print help (see more with '--help')
 ```
 

@@ -20,7 +20,7 @@ use crate::time::Time;
 /// A digital clock for the terminal, inspired by tty-clock.
 ///
 /// Defaults to 12-hour local time, no seconds, in the top left corner.
-#[derive(Parser, Debug)]
+#[derive(Parser, Debug, Clone)]
 #[clap(name = "tock", about = "A digital clock for the terminal.")]
 pub struct Configuration {
     /// Horizontal 0-indexed position of top-left corner.
@@ -72,6 +72,10 @@ pub struct Configuration {
     /// [0]: https://docs.rs/chrono/0.4.6/chrono/format/strftime/index.html
     #[clap(short, long, default_value = "%F | %Z")]
     format: String,
+
+    /// Render the clock once and exit.
+    #[clap(short = 'o', long)]
+    pub once: bool,
 }
 
 //  H       :   M       :   S
